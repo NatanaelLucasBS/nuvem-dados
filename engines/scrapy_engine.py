@@ -2,9 +2,7 @@ import time
 import scrapy
 from scrapy.crawler import CrawlerRunner
 from crochet import setup, wait_for
-from core.url_resolver import WikiURLResolver
 
-# Inicializa o Crochet para desacoplar o loop assincrono do Scrapy no Colab / Streamlit
 setup()
 
 SCRAPY_RESULTS = []
@@ -17,10 +15,7 @@ class WikiSpider(scrapy.Spider):
         SCRAPY_RESULTS.append(" ".join(paragraphs))
 
 class ScrapyEngine:
-    """
-    Motor assincrono: executa spiders concorrentes utilizando Scrapy e CrawlerRunner,
-    com configuracao de reactor alinhada ao ambiente do Crochet.
-    """
+
     
     @wait_for(timeout=60)
     def _run_spider(self, urls):

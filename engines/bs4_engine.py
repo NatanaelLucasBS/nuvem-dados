@@ -3,10 +3,7 @@ from bs4 import BeautifulSoup
 from core.url_resolver import WikiURLResolver
 
 class BS4Engine:
-    """
-    Motor sincrono: utiliza Requests para envio HTTP sequencial e BeautifulSoup
-    para parsing de DOM nas tags <p>.
-    """
+
     
     def extract(self, terms):
         start_time = time.time()
@@ -18,7 +15,6 @@ class BS4Engine:
             url, html = WikiURLResolver.get_valid_content(term)
             if html:
                 soup = BeautifulSoup(html, 'html.parser')
-                # Coleta apenas conteudo de paragrafos principais
                 for p in soup.find_all('p'):
                     combined_text += p.get_text() + " "
                 valid_count += 1

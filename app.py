@@ -7,10 +7,7 @@ from engines.scrapy_engine import ScrapyEngine
 from core.text_processor import TextProcessor
 
 class AppUI:
-    """
-    Interface principal do Data App: orquestra as chamadas dos motores,
-    gerencia inputs do usuario e renderiza paineis de metricas e visualizacao.
-    """
+
     
     def __init__(self):
         self.nlp = NLPProcessor()
@@ -27,7 +24,6 @@ class AppUI:
             
             st.markdown(f"### Resultados da Execução ({engine_name})")
             
-            # Painel com as 3 metricas requeridas
             col_m1, col_m2, col_m3 = st.columns(3)
             with col_m1:
                 st.metric(label="Tempo de Execução", value=f"{exec_time:.4f} s")
